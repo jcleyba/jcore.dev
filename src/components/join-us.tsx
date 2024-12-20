@@ -10,10 +10,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { sendContactFormEmail } from "@/lib/email";
+import { useMutation } from "@tanstack/react-query";
 import { Code } from "lucide-react";
 import { useState } from "react";
 
 export const JoinUs = () => {
+  const { mutate, error, isPending } = useMutation({
+    mutationFn: sendContactFormEmail,
+    onSuccess: () => {
+      setOpen(false);
+    },
+  });
+
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -23,8 +31,7 @@ export const JoinUs = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await sendContactFormEmail(formData);
-    setOpen(false);
+    await mutate(formData);
   };
 
   return (
@@ -38,7 +45,7 @@ export const JoinUs = () => {
       <DialogContent className="sm:max-w-[425px] bg-[#F8F8F8] dark:bg-[#1F1F1F]">
         <DialogHeader>
           <DialogTitle className="text-[#2D2D2D] dark:text-white">
-            Contact Form
+            Join Our Team
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -92,11 +99,17 @@ export const JoinUs = () => {
             />
           </div>
           <Button
+            disabled={isPending}
             type="submit"
             className="w-full bg-[#FF7171] hover:bg-[#FF7171]/90 text-white"
           >
-            Send Message
+            {isPending ? "Sending..." : "Send Message"}
           </Button>
+          {error && (
+            <p className="text-red-500">
+              Something went wrong, please try again.
+            </p>
+          )}
         </form>
       </DialogContent>
     </Dialog>

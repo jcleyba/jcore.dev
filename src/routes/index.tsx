@@ -1,11 +1,9 @@
-import * as React from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Code, Users, Handshake, DollarSign } from "lucide-react";
-import { ModeToggle } from "@/components/mode-toggle";
 import { ContactUs } from "@/components/contact-us";
 import { JoinUs } from "@/components/join-us";
+import { ModeToggle } from "@/components/mode-toggle";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { createFileRoute } from "@tanstack/react-router";
+import { Code, DollarSign, Handshake, Users } from "lucide-react";
 
 const HomeComponent = () => {
   return (
