@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Code, Users, Handshake, DollarSign } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
+import { ContactUs } from "@/components/contact-us";
+import { JoinUs } from "@/components/join-us";
 
 const HomeComponent = () => {
   return (
@@ -18,7 +20,7 @@ const HomeComponent = () => {
         <div className="text-center space-y-4">
           <div className="flex justify-center mb-8">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Vector-NrkB368YzPDqKHB9VYCpUf4ucYPbJM.png"
+              src="/assets/logo.png"
               alt="JCore Logo"
               width={300}
               height={80}
@@ -113,13 +115,9 @@ const HomeComponent = () => {
           </CardContent>
         </Card>
 
-        <div className="text-center">
-          <Button
-            className="bg-[#FF7171] hover:bg-[#FF7171]/90 text-white px-8 py-6 text-lg"
-            onClick={() => (window.location.href = "mailto:hr@jcore.dev")}
-          >
-            Join Our Team
-          </Button>
+        <div className="text-center flex flex-row gap-4 justify-center">
+          <JoinUs />
+          <ContactUs />
         </div>
       </div>
     </div>
