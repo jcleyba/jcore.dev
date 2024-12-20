@@ -11,17 +11,21 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { sendContactFormEmail } from "@/lib/email";
 import { useMutation } from "@tanstack/react-query";
-import { Code } from "lucide-react";
 import { useState } from "react";
 
-export const JoinUs = () => {
+export const ContactDialog = ({
+  title,
+  icon,
+}: {
+  title: string;
+  icon: React.ReactNode;
+}) => {
   const { mutate, error, isPending } = useMutation({
     mutationFn: sendContactFormEmail,
     onSuccess: () => {
       setOpen(false);
     },
   });
-
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -38,14 +42,14 @@ export const JoinUs = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="bg-[#FF7171] hover:bg-[#FF7171]/90 text-white px-8 py-6 text-lg">
-          <Code className="h-5 w-5" />
-          Join Our Team
+          {icon}
+          {title}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-[#F8F8F8] dark:bg-[#1F1F1F]">
         <DialogHeader>
           <DialogTitle className="text-[#2D2D2D] dark:text-white">
-            Join Our Team
+            {title}
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -99,9 +103,9 @@ export const JoinUs = () => {
             />
           </div>
           <Button
-            disabled={isPending}
             type="submit"
             className="w-full bg-[#FF7171] hover:bg-[#FF7171]/90 text-white"
+            disabled={isPending}
           >
             {isPending ? "Sending..." : "Send Message"}
           </Button>

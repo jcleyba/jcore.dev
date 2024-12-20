@@ -1,5 +1,4 @@
-import { ContactUs } from "@/components/contact-us";
-import { JoinUs } from "@/components/join-us";
+import { ContactDialog } from "@/components/contact-dialog";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { createFileRoute } from "@tanstack/react-router";
@@ -114,8 +113,14 @@ const HomeComponent = () => {
         </Card>
 
         <div className="text-center flex flex-row gap-4 justify-center">
-          <JoinUs />
-          <ContactUs />
+          <ContactDialog
+            title="Join Our Team"
+            icon={<Code className="h-5 w-5" />}
+          />
+          <ContactDialog
+            title="Get in Touch"
+            icon={<Handshake className="h-5 w-5" />}
+          />
         </div>
       </div>
     </div>
