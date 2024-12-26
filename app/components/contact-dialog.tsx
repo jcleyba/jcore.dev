@@ -61,6 +61,7 @@ export const ContactDialog = ({
             </Label>
             <Input
               id="fullName"
+              name="fullName"
               value={formData.fullName}
               onChange={(e) =>
                 setFormData({ ...formData, fullName: e.target.value })
@@ -76,6 +77,7 @@ export const ContactDialog = ({
             </Label>
             <Input
               id="email"
+              name="email"
               type="email"
               value={formData.email}
               onChange={(e) =>
@@ -92,6 +94,7 @@ export const ContactDialog = ({
             </Label>
             <Textarea
               id="message"
+              name="message"
               value={formData.message}
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
