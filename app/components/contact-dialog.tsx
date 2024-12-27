@@ -40,7 +40,7 @@ export const ContactDialog = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-[#FF7171] hover:bg-[#FF7171]/90 text-white px-8 py-6 text-lg">
+        <Button className="bg-[#FF7171] hover:bg-[#FF7171]/90 text-white px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-base sm:text-lg flex items-center gap-2">
           {icon}
           {title}
         </Button>
